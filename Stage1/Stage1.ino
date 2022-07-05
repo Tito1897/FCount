@@ -9,6 +9,7 @@ char Jumlahikan [7];
 // const char DEGREE_SYMBOL[] = { 0xB0, '\0' };
 
 // float i = 0.0;
+const int digital_pin = 7;
 int x = 0;
 
 // DHT dht(7, DHTTYPE);
@@ -19,6 +20,7 @@ void setup() {
 
   // dht.begin();
   Serial.begin(9600); 
+  pinMode(digital_pin,INPUT);
   u8g2.begin();
   u8g2.enableUTF8Print();
   u8g2.setFont(u8g2_font_helvB10_tf); 
@@ -27,12 +29,25 @@ void setup() {
 
 void loop() {  
   u8g2.firstPage();
-  do {   
+  if(digitalRead(digital_pin) == 0) {
+    Serial.print("\t Digital Reading=");
+    Serial.println("TIDAK ADA OBJEK");
+    Serial.print(" Counter=");
+    Serial.print(x);
+  } else {
+    x = x + 1;
+    Serial.print("\t Digital Reading=");
+    Serial.println("ADA OBJEK");
+    Serial.print(" Counter=");
+    Serial.print(x);
+   
+  // i = i + 1.0;
+// x++;
+  delay (1000);
+}
+do {   
     draw();
   } while( u8g2.nextPage() );
-  // i = i + 1.0;
-x++;
-  delay (1000);
 }
   
 void draw(){
@@ -66,4 +81,3 @@ itoa(x,Jumlahikan,10);
 //   // dtostrf(h, 3, 1, humidity);
 // //   itoa(x,humidity,10);
 // }
-
