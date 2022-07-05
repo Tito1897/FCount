@@ -1,5 +1,5 @@
 // #include <DHT.h>
-// #include <U8g2lib.h>
+#include <U8g2lib.h>
 #include <U8x8lib.h>
 
 // #define DHTTYPE    DHT22
@@ -66,3 +66,4 @@ itoa(x,Jumlahikan,10);
 //   // dtostrf(h, 3, 1, humidity);
 // //   itoa(x,humidity,10);
 // }
+
